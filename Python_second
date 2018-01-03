@@ -63,7 +63,6 @@ while True:
                         dict2={dict123[g][1]:[dict123[g][0],g,dict123[g][2]]}
                         dict_age.update(dict2)
                 sorted(dict_age.items(),reverse=True)
-                #print(dict_age)
                 for g in dict_age.keys():
                     print("username is {}, password is {}, age is {}, tel is {}".format(dict_age[g][1], '*'*len(dict_age[g][0]), g, dict_age[g][2]))
             elif z == 'tel':
