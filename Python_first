@@ -1,0 +1,33 @@
+dict={'zhangsan':['1','13600000001'],'lisi':['2','13600000002'],'wangwu':['3','13600000003']}
+while True:
+    a=input("please input operation>>>")
+    if a == 'exit':
+        break
+    if a == 'delete' or a == 'update' or a == 'find' or a == 'list':
+        if a == 'delete':
+            b=input("please input name>>>")
+            if b in dict.keys():
+                dict.pop(b)
+                print(dict.items())
+            else:
+                print("this user doesn't exist")
+        if a == 'update':
+            c=input("please input name:age:tel>>>")
+            e=c.split(':')
+            if e[0] in dict.keys():
+                f=e[0]
+                e.remove(e[0])
+                dict[f]=e #更新字典内容
+                print(dict.items())
+            else:
+                print("this user doesn't exist")
+        if a == 'find':
+            g=input("please input name>>>")
+            if g in dict.keys():
+                print(dict[g])
+            else:
+                print("this user doesn't exist")
+        if a == 'list':
+            print(dict.items()) 
+    else:
+        print("please input update,delte,find,list or exit")
