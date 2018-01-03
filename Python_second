@@ -1,0 +1,80 @@
+dict123={'zhangsan':['zhangsan','1','13600000001'],'lisi':['lisi','2','13600000002'],'wangwu':['wangwu','3','13600000003']}
+user123={'username':'admin', 'password':'111111'}
+dict2={}
+dict3={}
+dict_age={}
+dict_tel={}
+while True:
+    a=input("please input operation>>>")
+    if a == 'exit':
+        break
+    elif a == 'delete':
+        while True:
+            r=input("please input username>>>")
+            s=input("please input password>>>")
+            if r == 'exit' or s == 'exit':
+                break
+            elif r == user123['username'] and s == user123['password']:
+                b=input("please input name>>>")
+                if b in dict123.keys():
+                    dict123.pop(b)
+                    print(dict123.items())
+                else:
+                    print("this user doesn't exist")
+            else:
+                print("please input the correct username and password")
+    elif a == 'update':
+        while True:
+            r=input("please input username>>>")
+            s=input("please input password>>>")
+            if r == 'exit' or s == 'exit':
+                break
+            elif r == user123['username'] and s == user123['password']:
+                c=input("please input name:password:age:tel>>>")
+                e=c.split(':')
+                if e[0] in dict123.keys():
+                    f=e[0]
+                    e.remove(e[0])
+                    dict123[f]=e #更新字典内容
+                    print(dict123.items())
+                else:
+                    print("this user doesn't exist")
+            else:
+                print("please input the correct username and password")
+    elif a == 'find':
+        g=input("please input name>>>")
+        if g in dict123.keys():
+            #print(dict123[g])
+            print("username is {}, password is {}, age is {}, tel is {}".format(g, '*'*len(dict123[g][0]), dict123[g][1], dict123[g][2]))
+        else:
+            print("this user doesn't exist")
+    elif a == 'list':
+        while True:
+            z=input("sorted by name,age or tel>>>")
+            if z == 'exit':
+                break
+            elif z == 'name':
+                sorted(dict123.items())
+                for g in dict123.keys():
+                    print("username is {}, password is {}, age is {}, tel is {}".format(g, '*'*len(dict123[g][0]), dict123[g][1], dict123[g][2]))
+            elif z == 'age':
+                for g in dict123.keys():
+                    if g not in dict2.keys():
+                        dict2={dict123[g][1]:[dict123[g][0],g,dict123[g][2]]}
+                        dict_age.update(dict2)
+                sorted(dict_age.items(),reverse=True)
+                #print(dict_age)
+                for g in dict_age.keys():
+                    print("username is {}, password is {}, age is {}, tel is {}".format(dict_age[g][1], '*'*len(dict_age[g][0]), g, dict_age[g][2]))
+            elif z == 'tel':
+                for g in dict123.keys():
+                    if g not in dict3.keys():
+                        dict3={dict123[g][2]:[dict123[g][0],dict123[g][1],g]}
+                        dict_tel.update(dict3)
+                sorted(dict_tel.items(),reverse=True)
+                for g in dict_tel.keys():
+                    print("username is {}, password is {}, age is {}, tel is {}".format(dict_tel[g][2], '*'*len(dict_tel[g][0]), dict_tel[g][1], g))
+            else:
+                print("please input name, age or tel")
+    else:
+        print("please input update,delte,find,list or exit")
