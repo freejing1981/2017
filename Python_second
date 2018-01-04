@@ -1,9 +1,10 @@
-dict123={'zhangsan':['zhangsan','1','13600000001'],'lisi':['lisi','2','13600000002'],'wangwu':['wangwu','3','13600000003']}
+dict123={'zhangsan':['zhangsan','1','13600000006'],'lisi':['lisi','2','13600000005'],'wangwu':['wangwu','3','13600000004']}
 user123={'username':'admin', 'password':'111111'}
 dict2={}
 dict3={}
 dict_age={}
 dict_tel={}
+dict_name={}
 while True:
     a=input("please input operation>>>")
     if a == 'exit':
@@ -54,25 +55,30 @@ while True:
             if z == 'exit':
                 break
             elif z == 'name':
-                sorted(dict123.items())
-                for g in dict123.keys():
-                    print("username is {}, password is {}, age is {}, tel is {}".format(g, '*'*len(dict123[g][0]), dict123[g][1], dict123[g][2]))
+                dict_name=dict123
+                sorted(dict_name.items())
+                for v in dict_name.keys():
+                    print("username is {}, password is {}, age is {}, tel is {}".format(v, '*'*len(dict_name[v][0]), dict_name[v][1], dict_name[v][2]))
             elif z == 'age':
-                for g in dict123.keys():
-                    if g not in dict2.keys():
-                        dict2={dict123[g][1]:[dict123[g][0],g,dict123[g][2]]}
+                for p in dict123.keys():
+                    if p not in dict2.keys():
+                        dict2={dict123[p][1]:[dict123[p][0],p,dict123[p][2]]}
                         dict_age.update(dict2)
-                sorted(dict_age.items(),reverse=True)
-                for g in dict_age.keys():
-                    print("username is {}, password is {}, age is {}, tel is {}".format(dict_age[g][1], '*'*len(dict_age[g][0]), g, dict_age[g][2]))
+                print(dict_age)
+                sorted(dict_age.items())
+                print(dict_age)
+                for p in dict_age.keys():
+                    print("username is {}, password is {}, age is {}, tel is {}".format(dict_age[p][1], '*'*len(dict_age[p][0]), p, dict_age[p][2]))
             elif z == 'tel':
-                for g in dict123.keys():
-                    if g not in dict3.keys():
-                        dict3={dict123[g][2]:[dict123[g][0],dict123[g][1],g]}
+                for n in dict123.keys():
+                    if n not in dict3.keys():
+                        dict3={dict123[n][2]:[dict123[n][0],dict123[n][1],n]}
                         dict_tel.update(dict3)
-                sorted(dict_tel.items(),reverse=True)
-                for g in dict_tel.keys():
-                    print("username is {}, password is {}, age is {}, tel is {}".format(dict_tel[g][2], '*'*len(dict_tel[g][0]), dict_tel[g][1], g))
+                print(dict_tel)
+                sorted(dict_tel.items())
+                print(dict_tel)
+                for n in dict_tel.keys():
+                    print("username is {}, password is {}, age is {}, tel is {}".format(dict_tel[n][2], '*'*len(dict_tel[n][0]), dict_tel[n][1], n))
             else:
                 print("please input name, age or tel")
     else:
